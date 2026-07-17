@@ -4,7 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import LightRays from "@/components/LightRays";
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
-
+import Navbar from "@/components/Navbar";
 const schibstedGrotesk = Schibsted_Grotesk({
   variable: "--font-schibsted-grotesk",
   subsets: ["latin"],
@@ -38,22 +38,25 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <LightRays
-          raysOrigin="top-center-offset"
-          raysColor="#ffffff"
-          raysSpeed={1}
-          lightSpread={0.5}
-          rayLength={3}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0}
-          distortion={0}
-          className="custom-rays"
-          pulsating={false}
-          fadeDistance={1}
-          saturation={1}
-        />
-        {children}
+        <Navbar />
+        <div className="absolute top-0 inset-0 z-[-1] min-h-screen w-full">
+          <LightRays
+            raysOrigin="top-center"
+            raysColor="#ffffff"
+            raysSpeed={1}
+            lightSpread={0.5}
+            rayLength={3}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0}
+            distortion={0}
+            className="custom-rays"
+            pulsating={false}
+            fadeDistance={1}
+            saturation={1}
+          />
+        </div>
+        <main className="">{children}</main>
       </body>
     </html>
   );
